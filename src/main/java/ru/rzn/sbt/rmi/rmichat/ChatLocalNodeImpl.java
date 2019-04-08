@@ -25,7 +25,7 @@ public class ChatLocalNodeImpl implements IChatLocalNode {
                         }
                     }
                 } catch (InterruptedException e) {
-                    System.out.println("Client finishes its work");
+                    System.out.println("Client has finished its work");
                 }
             }
         }
