@@ -18,8 +18,9 @@ public class ChatServer {
 
     public static void main(String[] args) throws RemoteException, AlreadyBoundException, InterruptedException {
         Registry registryCentral = LocateRegistry.createRegistry(1099);
-        IChatCentralNode localNode = (IChatCentralNode) UnicastRemoteObject.exportObject(new ChatCentralNodeImpl(), 1099);
-        registryCentral.bind("centralNode", localNode);
+        ChatCentralNodeImpl node = new ChatCentralNodeImpl();
+        IChatCentralNode centralNode = (IChatCentralNode) UnicastRemoteObject.exportObject(node, 0);
+        registryCentral.bind("centralNode", centralNode);
         new ChatServer().lock();
     }
 }

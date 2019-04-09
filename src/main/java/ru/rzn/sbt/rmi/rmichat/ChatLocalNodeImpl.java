@@ -19,7 +19,7 @@ public class ChatLocalNodeImpl implements IChatLocalNode {
             synchronized (lock) {
                 try {
                     while (true) {
-                        wait();
+                        lock.wait();
                         while(!messages.isEmpty()) {
                             System.out.println(messages.poll());
                         }
@@ -42,7 +42,7 @@ public class ChatLocalNodeImpl implements IChatLocalNode {
     public void receive(String message) throws RemoteException {
         messages.add(message);
         synchronized (lock) {
-            notify();
+            lock.notify();
         }
     }
 }

@@ -71,5 +71,6 @@ public class ClientData {
         this.port = port;
         this.nickName = nickName;
         this.host = host;
+        this.chatLocalNode = chatLocalNode;
     }
 }
