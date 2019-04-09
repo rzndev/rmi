@@ -22,8 +22,8 @@ public class RmiServer  {
 
     public void register() throws RemoteException, AlreadyBoundException {
         Registry registry = LocateRegistry.createRegistry(1099);
-        IFileReader fileReader = (IFileReader) UnicastRemoteObject.exportObject(fileReader, 0);
-        registry.bind("FileReaderService", fileReader);
+        IFileReader fileReaderRemote = (IFileReader) UnicastRemoteObject.exportObject(fileReader, 0);
+        registry.bind("FileReaderService", fileReaderRemote);
 
     }
 
